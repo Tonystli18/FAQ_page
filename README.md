@@ -24,14 +24,18 @@ Assume you've successfully installed PHP, Wampserver, laravel and npm.
 ```
     // create new laravel project folder 'faq-page' and already installed laravel's dependencies 
     > laravel new faq-page
-
+    // install dependencies
+    > cd faq-page
+    > npm install
 ```
 ### Step 2: Install Vue
 Change to project directory and run:
 ```
-    > npm install vue
+    > composer require laravel/ui --dev
+    > php artisan ui vue
 ```
+Then you'll see 
 
 ## Which files I changed and what changed before implementing this FAQ feature?
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Note, after you clone this repository, you need to run 'npm install' to install 'node_modules' and 'composer install' to install 'vendor' dependencies. Also change '.env.example' to '.env' and make necessary changes to it.

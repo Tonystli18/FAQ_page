@@ -1,6 +1,6 @@
-# About this project
+# About This Project
 
-This project demonstrates how to use Vue.js javascript framework and Tailwind CSS framework in laravel framework. It is created by following laracasts lesson [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7?autoplay=true). However, because that lesson was published in 2018, if you follow exactly the way in lesson video, it won't work. I'll describe below how I figured out to setup everything to implement that FAQ page.
+This project demonstrates how to use Vue.js javascript framework and Tailwind CSS framework in laravel framework. It is created by following instructions in laracasts lesson [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7?autoplay=true). However, because this lesson was published two years ago in 2018, if you follow exactly the way in lesson video, it won't work, there are some issues need to be fixed. I'll describe below how I figured out to setup everything to implement that FAQ page.
 
 ## Development environment/tools
 - OS: Windows 10
@@ -24,11 +24,13 @@ Assume you've successfully installed PHP, Wampserver, laravel and npm.
 ```
     // create new laravel project folder 'faq-page' and already installed laravel's dependencies 
     > laravel new faq-page
-    // install Vue.js
-    > cd faq-page
+
+```
+### Step 2: Install Vue
+Change to project directory and run:
+```
     > npm install vue
 ```
-### Step 2: 
 
 ## Which files I changed and what changed before implementing this FAQ feature?
 

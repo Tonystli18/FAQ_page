@@ -1,10 +1,16 @@
 # About this project
 
-This project demonstrates how to use Vue and TailwindCSS in laravel framework. It is created after taking laracasts lesson [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7?autoplay=true). However, because that lesson was published in 2018, if you follow exactly the way in lesson video, it will not work. I'll describe below how I figured out the way to create that FAQ page.
+This project demonstrates how to use Vue and TailwindCSS in laravel framework. It is created after taking laracasts lesson [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7?autoplay=true). However, because that lesson was published in 2018, if you follow exactly the way in lesson video, it won't work. I'll describe below how I figured out to setup everything to implement that FAQ page.
+
+## Development environment/tools
+
 
 ## How to create the project framework?
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Step 1: Create laravel project structure
+run below command
+    > laravel new faq-page
+### Step 2: 
 
 ## Which files I changed and what changed before implementing this FAQ feature?
 

@@ -1,22 +1,24 @@
 # About This Project
 
-This project demonstrates how to use Vue.js javascript framework and Tailwind CSS framework in laravel framework. It is created by following instructions in laracasts lesson [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7?autoplay=true). However, because this lesson was published two years ago in 2018, if you follow exactly the way in lesson video, it won't work, there are some issues need to be fixed. I'll describe below how I figured out to setup everything to implement that FAQ page.
+This project demonstrates how to generate a responsive FAQ page using Vue component, Laravel Mix and Sass with TailwindCSS. This FAQ page is an example created by Jeffry Way in laracasts lesson [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7). However, because this lesson was published two years ago in 2018 and with some code pieces missing, if you follow exactly the instructions in that video, it won't work. 
+In this document, I'll describe how I setup the development environment from sketch to create that FAQ page successfully.
 
 ## Development environment/tools
-- OS: Windows 10
-- Web server: Apache v2.4.41
-- Database: MySQL v8.0.18
-- Editor: Visual Studio Code v1.42.0
-- Version Control and Code repository: [Git for Windows v2.25.0.windows.1](https://git-scm.com/download/win) and [Github](http://github.com)
-- Programming language: [PHP v7.4.0](https://www.php.net/downloads.php)
-- [Wampserver64 v3.2.0](http://www.wampserver.com/en/download-wampserver-64bits/). My computer is a HP laptop running Windows 10, so I choose Wampserver which can easily install Apache and MySQL on it and start/stop running environment for my software.
-- [Laravel Framework v6.14.0](https://laravel.com/docs/6.x). To install Laravel, you need to install [Composer v1.9.3](https://getcomposer.org/download/) first. Then run below command to install laravel:
+- **OS**: Windows 10
+- **Web server**: Apache v2.4.41
+- **Database**: MySQL v8.0.18
+- **Editor**: Visual Studio Code v1.42.0
+- **Version Control and Code repository**: [Git for Windows v2.25.0.windows.1](https://git-scm.com/download/win) and [Github](http://github.com)
+- **Programming language**: [PHP v7.4.0](https://www.php.net/downloads.php)
+- **[Wampserver64 v3.2.0](http://www.wampserver.com/en/download-wampserver-64bits/)**. My computer is a HP laptop running Windows 10, so I choose Wampserver which can easily install Apache and MySQL on it and start/stop running environment for my software.
+- **[Laravel Framework v6.14.0](https://laravel.com/docs/6.x)**. 
+To install Laravel, you need to install [Composer v1.9.3](https://getcomposer.org/download/) first. Then run below command:
 ```
     > composer global require laravel/installer
 ```
-- [npm v6.13.4](https://www.npmjs.com/get-npm). It will be used to install dependencies (node_modules) required by laravel, Vue and CSS. npm is distributed with Node.js- which means that when you download Node.js, you automatically get npm installed on your computer.
-- [Vue.js 2.5.17](https://vuejs.org/v2/guide/installation.html#NPM). A popular **javaScript** framework.
-- [tailwindcss 1.2.0](https://tailwindcss.com/docs/installation). A utility-first **CSS** framework. We are going to use Laravel Mix and Sass with TailwindCSS.
+- **Javascript package manager [npm v6.13.4](https://www.npmjs.com/get-npm)**. It will be used to install dependencies (node_modules) required by laravel, Vue and CSS. npm is distributed with Node.js- which means that when you download Node.js, you automatically get npm installed on your computer.
+- **javaScript framework**: [Vue.js 2.5.17](https://vuejs.org/v2/guide/installation.html#NPM)
+- **utility-first CSS framework**: [tailwindcss 1.2.0](https://tailwindcss.com/docs/installation).
 
 ## How to setup code structure of this project?
 
@@ -113,4 +115,4 @@ This changes tell Laravel Mix(which internally uses webpack) to compile tailwind
 
 ## Reproduce this project on your computer
 1. Since git won't add "node_modules" and "vendors" folders into repository, after you clone this project, you need to run 'npm install' to install 'node_modules' and 'composer install' to install 'vendor' dependencies. 
-2. The '.env' file is also not included in this repository. Also change '.env.example' to '.env' and make necessary changes to it.
+2. The '.env' file is also not included in this repository. You can change '.env.example' to '.env' and make necessary changes according to the environment in your computer.

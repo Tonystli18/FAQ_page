@@ -1,78 +1,123 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# About This Project
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+This project demonstrates how to generate a responsive FAQ page using Vue component, Laravel Mix and Sass with TailwindCSS. This FAQ page is an example created by Jeffry Way in laracasts lesson [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7). However, because this lesson was published two years ago in 2018 and with some code pieces missing, if you follow exactly the instructions in that video, it won't work.  
+In this document, I'll describe how I setup the development environment from sketch to create that FAQ page successfully.
 
-## About Laravel
+## Development Environment/Tools
+- **OS**: Windows 10
+- **Web server**: Apache v2.4.41
+- **Database**: MySQL v8.0.18
+- **Editor**: Visual Studio Code v1.42.0
+- **Version Control and Code repository**: [Git for Windows v2.25.0](https://git-scm.com/download/win) and [Github](http://github.com)
+- **Programming language**: [PHP v7.4.0](https://www.php.net/downloads.php)
+- **[Wampserver64 v3.2.0](http://www.wampserver.com/en/download-wampserver-64bits/)**. My computer is a HP laptop running Windows 10, so I choose Wampserver which can easily install Apache, MySQL, and start/stop running environment.
+- **[Laravel Framework v6.14.0](https://laravel.com/docs/6.x)**. 
+To install Laravel, you need to install [Composer](https://getcomposer.org/download/)(v1.9.3) first. Then run below command:
+```
+    > composer global require laravel/installer
+```
+- **Javascript package manager**: [npm v6.13.4](https://www.npmjs.com/get-npm). It is used to install dependencies (node_modules) required by laravel, Vue and CSS. npm is distributed with Node.js - which means that when you download Node.js, you automatically get npm installed on your computer.
+- **JavaScript framework**: [Vue.js 2.5.17](https://vuejs.org/v2/guide/installation.html#NPM)
+- **Utility-first CSS framework**: [tailwindcss 1.2.0](https://tailwindcss.com/docs/installation).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Create Project Directory From Sketch
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Step 1: Create laravel project structure
+Assume you've successfully installed PHP, Wampserver, laravel and npm. Run below commands:
+```
+    // create new laravel project folder 'faq-page'
+    > laravel new faq-page
+    // install dependencies which already in laravel package
+    > cd faq-page
+    > npm install
+```
+### Step 2: Install Vue
+1. Since Composer package already provides Vue, so we just go ahead to install it into my project. Change to project directory and run:
+```
+    > composer require laravel/ui --dev
+```
+It will change *composer.json* file under project directory to add related configuration.   
+2. Generate basic scaffolding of Vue in project directory
+```
+    > php artisan ui vue
+```
+This will add below files/folders:
+* *package.json*
+* *webpack.mix.js*
+* */resources/js/app.js*
+* */resources/js/bootstrap.js* //This project won't use it
+* */resources/sass/_variables.scss* //a sass partial
+* */resources/sass/app.scss*
+* a new folder *components* under */resources* folder, in which there is a Vue component *ExampleComponent.Vue*. Any new Vue components can be put into this folder. And new Vue components need to be registered in file */resources/js/app.js*, like this:
+```
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('question', require('./components/Question.vue').default); // new Vue component generated in this project
+```
+Note, anytime a Vue component is changed, you need to run "npm run dev" to rebuild the resources.  
+3. Then run **npm install** to install related related dependencies and run **npm run dev** to rebuild assets.
+### Step 3: Install Tailwind CSS framework
+```
+    > npm install tailwindcss
+```
+This will make below changes in project folder:
+- Add tailwindcss dependency into *package.json*
+- Add *app.css* into */public/css* folder
+- Add *app.js* into */public/js* folder
+- Add a *mix-manifest.json* file into */public* folder.
+### Step 4: Config Tailwind in project
+1. Make changes to *resources\sass\app.scss*  
+Replace
+```
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Variables
+@import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+```
+by this:
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+``` 
+2. Generate tailwind config file  
+Run
+```
+    > npx tailwindcss init
+```
+3. Include Tailwind in Laravel Mix build Process  
+Open the *webpack.mix.js* file, changes:
+```
+mix.js('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css')
+```
+to
+```
+const tailwindcss = require('tailwindcss');
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+mix.js('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css')
+   .options({
+      processCssUrls: false,
+      postCss: [ tailwindcss('tailwind.config.js') ],
+});
+```
+This changes tell Laravel Mix(which internally uses webpack) to compile tailwind sass using the tailwind configuration file.
+4. run **npm install** and **npm run dev** again
 
-## Learning Laravel
+## Key files in this project
+I'm not going to cover the details like, how to use **php artisan** to generate model/view/controller, how to config MySQL database connection, how to use migration to create database table, etc. I assume you are very familiar with these skills, so I only list those key source files in this project implement the features.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. app\Question.php - Eloquest ORM model
+2. app\Http\Controllers\QuestionController.php - Resource Controller
+3. resources\js\components\Question.vue - **The Vue component uses Tailwind CSS framework, the fun part!**
+4. resources\views\faq.blade.php - Blade view component
+5. resources\views\layout.blade.php - Blade view layout
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Reproduce this project on your computer
+1. Since git won't add *node_modules* and *vendors* folders into repository, after you clone this project, you need to run **npm install** to install *node_modules* and **composer install** to install *vendor* dependencies. 
+2. The *.env* file is also not included in this repository. You can change *.env.example* to *.env* and make necessary changes according to the environment in your computer.  
 
-## Laravel Sponsors
+GOOD LUCK!
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

@@ -37590,7 +37590,11 @@ function normalizeComponent (
       // for template-only hot-reload because in that case the render fn doesn't
       // go through the normalizer
       options._injectStyles = hook
+<<<<<<< HEAD
       // register for functional component in vue file
+=======
+      // register for functioal component in vue file
+>>>>>>> 02062668e47fceb3989f81739dbaf5aab0e3bd20
       var originalRender = options.render
       options.render = function renderWithStyleInjection (h, context) {
         hook.call(context)
@@ -49631,6 +49635,7 @@ module.exports = g;
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/webpack/buildin/module.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/module.js ***!
@@ -49664,6 +49669,8 @@ module.exports = function(module) {
 
 /***/ }),
 
+=======
+>>>>>>> 02062668e47fceb3989f81739dbaf5aab0e3bd20
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -49676,8 +49683,12 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+<<<<<<< HEAD
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+=======
+// require('./bootstrap');
+>>>>>>> 02062668e47fceb3989f81739dbaf5aab0e3bd20
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -49703,6 +49714,7 @@ var app = new Vue({
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -49748,6 +49760,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+=======
+>>>>>>> 02062668e47fceb3989f81739dbaf5aab0e3bd20
 /***/ "./resources/js/components/ExampleComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue ***!
@@ -49904,8 +49918,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\wamp64\www\faqPage\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\wamp64\www\faqPage\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! C:\wamp64\www\faq-page\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\faq-page\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> 02062668e47fceb3989f81739dbaf5aab0e3bd20
 
 
 /***/ })

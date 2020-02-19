@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="">
-    <div id="app" class="container">
+    <div id="app" class="container mx-auto">
         <div class="w-3/5 m-auto generic-content">
             <header class="mb-10 text-center">
                 <h1 class="text-3xl mb-2">FAQ</h1>

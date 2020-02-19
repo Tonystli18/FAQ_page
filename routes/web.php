@@ -16,3 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/faq', 'QuestionController@index');
+
+Route::get('/mf-layout', function(){
+    return view('mf-layout');
+});
+
+Route::get('/fontsize', function(){
+    return view('fontsize');
+});

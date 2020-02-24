@@ -8,6 +8,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import Modal from './plugins/modal/ModalPlugin';
+
+Vue.use(Modal);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -21,6 +25,9 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('question', require('./components/Question.vue').default);
+Vue.component('scroll-link', require('./components/ScrollLink.vue').default);
+Vue.component('dropdown', require('./components/Dropdown.vue').default);
+// Vue.component('modal', require('./components/Modal.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

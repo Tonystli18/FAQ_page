@@ -24,3 +24,19 @@ Route::get('/mf-layout', function(){
 Route::get('/fontsize', function(){
     return view('fontsize');
 });
+
+Route::get('/smooth-scroll', function(){
+    return view('smooth-scroll');
+});
+
+Route::get('/context-menu', function(){
+    return view('context-menu');
+});
+
+Route::get('/show-modal', function(){
+    return view('show-modal');
+});
+
+Route::get('/modal-show', function(){
+    return view('modal-show');
+});

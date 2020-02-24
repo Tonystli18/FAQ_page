@@ -1,7 +1,15 @@
 # About This Project
 
-This project demonstrates how to generate a responsive FAQ page using Vue component, Laravel Mix and Sass with TailwindCSS. This FAQ page is an example created by Jeffry Way in laracasts lesson [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7). However, because this lesson was published two years ago in 2018 and with some code pieces missing, if you follow exactly the instructions in that video, it won't work.  
-In this document, I'll describe how I setup the development environment from sketch to create that FAQ page successfully.
+This is a demo project that demonstrates how to use Laravel, Vue.js, Tailwind CSS to implement some interesting features in a web application:
+- Mobile-first design(http://localhost/faqPage/public/): an example of Mobile-first design (change browser window size to see the effect)
+- Mobile-first layout(http://localhost/faqPage/public/mf-layout): an example of Mobile-first layout (change browser window size to see the effect)
+- responsive page adjusting font size(http://localhost/faqPage/public/fontsize): an example of responsive page adjusting font size according to browser window's size
+- responsive FAQ page(http://localhost/faqPage/public/faq): a responsive FAQ page using Vue component, Laravel Mix and Sass with TailwindCSS.
+- Smooth Scroll feature(http://localhost/faqPage/public/smooth-scroll): demo how to make a smooth scroll down to one port of web page
+- Context Menu(http://localhost/faqPage/public/context-menu): demo how to make a context menu using Vue component and tailwind
+- Modal without using Javascript(http://localhost/faqPage/public/show-modal#): a modal created by CSS and Laravel component, without using Java Script
+
+These examples are from Jeffry Way's laracasts lessons, such as [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7). However, because some lessons was published two years ago in 2018, and without providing source code files, if you follow exactly the instructions in lesson videos, some might not work. In this document, I'll describe how I setup the development environment from sketch, also I'll give the major source files for each related example. 
 
 ## Development Environment/Tools
 - **OS**: Windows 10
@@ -53,7 +61,7 @@ This will add below files/folders:
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('question', require('./components/Question.vue').default); // new Vue component generated in this project
 ```
-Note, anytime a Vue component is changed, you need to run "npm run dev" to rebuild the resources.  
+Note, anytime a Vue component is changed, you need to run *npm run dev* to rebuild the resources.  
 3. Then run **npm install** to install related related dependencies and run **npm run dev** to rebuild assets.
 ### Step 3: Install Tailwind CSS framework
 ```
@@ -109,11 +117,36 @@ This changes tell Laravel Mix(which internally uses webpack) to compile tailwind
 ## Key files in this project
 I'm not going to cover the details like, how to use **php artisan** to generate model/view/controller, how to config MySQL database connection, how to use migration to create database table, etc. I assume you are very familiar with these skills, so I only list those key source files in this project implement the features.
 
-1. app\Question.php - Eloquest ORM model
-2. app\Http\Controllers\QuestionController.php - Resource Controller
-3. resources\js\components\Question.vue - **The Vue component uses Tailwind CSS framework, the fun part!**
-4. resources\views\faq.blade.php - Blade view component
-5. resources\views\layout.blade.php - Blade view layout
+### Mobile-first design
+- *resources\views\welcome.blade.php*
+
+### Mobile-first layout
+- *resources\views\mf-layout.blade.php*
+
+### responsive page adjusting font size
+- *resources\views\fontsize.blade.php*
+- *resources\sass\app.scss* - setup root element font size
+
+### responsive FAQ page
+- app\Question.php - Eloquest ORM model
+- app\Http\Controllers\QuestionController.php - Resource Controller
+- resources\js\components\Question.vue - **The Vue component uses Tailwind CSS framework, the fun part!**
+- resources\views\faq.blade.php - Blade view component
+- resources\views\layout.blade.php - Blade view layout
+
+### Smooth Scroll feature
+- *resources\views\smooth-scroll.blade.php*
+- *resources\js\components\ScrollLink.vue* - Vue component *Scroll link*
+- *resources\js\app.js* - register a Vue component
+
+### Context Menu
+- *resources\views\context-menu.blade.php*
+- *resources\js\components\Dropdown.vue*
+
+### Modal without using Javascript
+ - *resources\views\show-modal.blade.php*
+ - *resources\views\modal.blade.php* - the modal component
+ - *public\css\modal.css* - modal component CSS file
 
 ## Reproduce this project on your computer
 1. Since git won't add *node_modules* and *vendors* folders into repository, after you clone this project, you need to run **npm install** to install *node_modules* and **composer install** to install *vendor* dependencies. 

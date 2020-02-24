@@ -8,6 +8,7 @@ This is a demo project that demonstrates how to use Laravel, Vue.js, Tailwind CS
 - Smooth Scroll feature(http://localhost/faqPage/public/smooth-scroll): demo how to make a smooth scroll down to one port of web page
 - Context Menu(http://localhost/faqPage/public/context-menu): demo how to make a context menu using Vue component and tailwind
 - Modal without using Javascript(http://localhost/faqPage/public/show-modal#): a modal created by CSS and Laravel component, without using Java Script
+- Modal implemented by Vue component/Vue Plugin(http://localhost/faqPage/public/modal-show#): there are two ways to implement a modal using Vue: Component and Plugin.
 
 These examples are from Jeffry Way's laracasts lessons, such as [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7). However, because some lessons was published two years ago in 2018, and without providing source code files, if you follow exactly the instructions in lesson videos, some might not work. In this document, I'll describe how I setup the development environment from sketch, also I'll give the major source files for each related example. 
 
@@ -147,6 +148,12 @@ I'm not going to cover the details like, how to use **php artisan** to generate 
  - *resources\views\show-modal.blade.php*
  - *resources\views\modal.blade.php* - the modal component
  - *public\css\modal.css* - modal component CSS file
+
+### Modal implemented by Vue component/Vue Plugin
+- *resources\views\modal-show.blade.php* - The view that demo Modal
+- *resources\js\plugins\modal\Component.vue* - Modal component
+- *resources\js\plugins\modal\ModalPlugin.js* - Modal Plugin file
+- *resources\js\components\ModalComponent.vue* - the Vue Component can be reused without Plugin
 
 ## Reproduce this project on your computer
 1. Since git won't add *node_modules* and *vendors* folders into repository, after you clone this project, you need to run **npm install** to install *node_modules* and **composer install** to install *vendor* dependencies. 

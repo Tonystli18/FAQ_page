@@ -10,7 +10,8 @@ This is a demo project that demonstrates how to use Laravel, Vue.js, Tailwind CS
 - Modal without using Javascript(http://localhost/faqPage/public/show-modal#): a modal created by CSS and Laravel component, without using Java Script
 - Modal implemented by Vue component/Vue Plugin(http://localhost/faqPage/public/modal-show#): there are two ways to implement a modal using Vue: Component and Plugin.
 
-These examples are from Jeffry Way's laracasts lessons, such as [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7). However, because some lessons was published two years ago in 2018, and without providing source code files, if you follow exactly the instructions in lesson videos, some might not work. In this document, I'll describe how I setup the development environment from sketch, also I'll give the major source files for each related example. 
+These examples are from Jeffry Way's laracasts lessons, such as [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7). However, because some lessons was published two years ago in 2018, if you follow exactly the instructions in lesson videos, some might not work work with the latest version of laravel and other modules.   
+In this document, I'll describe how I setup the development environment from sketch. I'll also give the major source files for each related example. 
 
 ## Development Environment/Tools
 - **OS**: Windows 10
@@ -20,7 +21,7 @@ These examples are from Jeffry Way's laracasts lessons, such as [modern-css-for-
 - **Version Control and Code repository**: [Git for Windows v2.25.0](https://git-scm.com/download/win) and [Github](http://github.com)
 - **Programming language**: [PHP v7.4.0](https://www.php.net/downloads.php)
 - **[Wampserver64 v3.2.0](http://www.wampserver.com/en/download-wampserver-64bits/)**. My computer is a HP laptop running Windows 10, so I choose Wampserver which can easily install Apache, MySQL, and start/stop running environment.
-- **[Laravel Framework v6.14.0](https://laravel.com/docs/6.x)**. 
+- **[Laravel Framework v6.15.1](https://laravel.com/docs/6.x)**. 
 To install Laravel, you need to install [Composer](https://getcomposer.org/download/)(v1.9.3) first. Then run below command:
 ```
     > composer global require laravel/installer

@@ -151,9 +151,17 @@ I'm not going to cover the details like, how to use **php artisan** to generate 
 
 ### Modal implemented by Vue component/Vue Plugin
 - *resources\views\modal-show.blade.php* - The view that demo Modal
-- *resources\js\plugins\modal\Component.vue* - Modal component
+- *resources\js\plugins\modal\Component.vue* - Modal component to support plugin
 - *resources\js\plugins\modal\ModalPlugin.js* - Modal Plugin file
-- *resources\js\components\ModalComponent.vue* - the Vue Component can be reused without Plugin
+- *resources\js\components\ModalComponent.vue* - if you don't want to use plug in, use this Vue Component instead of Component.Vue & ModalPlugin.js, and it needs to comment below 2 lines in *app.js* :
+```
+import Modal from './plugins/modal/ModalPlugin';
+Vue.use(Modal);
+```
+and uncomment this line:
+```
+Vue.component('modal', require('./components/ModalComponent.vue').default);
+```
 
 ## Reproduce this project on your computer
 1. Since git won't add *node_modules* and *vendors* folders into repository, after you clone this project, you need to run **npm install** to install *node_modules* and **composer install** to install *vendor* dependencies. 

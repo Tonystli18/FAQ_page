@@ -51,6 +51,9 @@
                         </div>
                     </div>
                 </main>
+                <aside class="bg-yellow-200 p-3">
+                    sidebar right
+                </aside>
             </div>
             <footer class="bg-teal-700 text-white p-3">
                 Copyright 2020

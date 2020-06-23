@@ -8,8 +8,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// if you want to use plugin, uncomment below two lines
 import Modal from './plugins/modal/ModalPlugin';
-
 Vue.use(Modal);
 
 /**
@@ -24,10 +24,12 @@ Vue.use(Modal);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('question', require('./components/Question.vue').default);
+Vue.component('accordion', require('./components/Accordion.vue').default);
 Vue.component('scroll-link', require('./components/ScrollLink.vue').default);
 Vue.component('dropdown', require('./components/Dropdown.vue').default);
-// Vue.component('modal', require('./components/Modal.vue').default);
+//if you want use plugin, comment below line:
+// Vue.component('modal', require('./components/ModalComponent.vue').default);
+Vue.component('confirm-dialog', require('./components/ConfirmDialog.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

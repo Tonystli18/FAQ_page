@@ -10,10 +10,10 @@
                 <p> It's Ok, from time to time, we all have questions.</p>
             </header>
 
-            @foreach ($questions as $question)
-            <question :question="{{ json_encode($question) }}"></question>
-
-            @endforeach
+            <accordion :items="{{ $questions}}"></accordion>
+            {{-- @foreach ($questions as $question)
+            <accordion :title ="{{ json_encode($question->question) }}" :body="{{ json_encode($question->answer) }}"></accordion>
+            @endforeach --}}
         </div>
     </div>
 </section>

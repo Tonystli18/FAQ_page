@@ -1,6 +1,6 @@
 # About This Project
 
-This is a demo project that demonstrates how to use Laravel, Vue.js, Tailwind CSS to implement some interesting features in a web application:
+This is a demo project that demonstrates how to use Laravel, Vue.js, Tailwind CSS to implement some typical features in a web application:
 - Mobile-first design(http://localhost/faqPage/public/): an example of Mobile-first design (change browser window size to see the effect)
 - Mobile-first layout(http://localhost/faqPage/public/mf-layout): an example of Mobile-first layout (change browser window size to see the effect)
 - responsive page adjusting font size(http://localhost/faqPage/public/fontsize): an example of responsive page adjusting font size according to browser window's size
@@ -10,8 +10,9 @@ This is a demo project that demonstrates how to use Laravel, Vue.js, Tailwind CS
 - Modal without using Javascript(http://localhost/faqPage/public/show-modal#): a modal created by CSS and Laravel component, without using Java Script
 - Modal implemented by Vue component/Vue Plugin(http://localhost/faqPage/public/modal-show#): there are two ways to implement a modal using Vue: Component and Plugin.
 
-These examples are from Jeffry Way's laracasts lessons, such as [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7). However, because some lessons was published two years ago in 2018, if you follow exactly the instructions in lesson videos, some might not work work with the latest version of laravel and other modules.   
-In this document, I'll describe how I setup the development environment from sketch. I'll also give the major source files for each related example. 
+These examples were created by following Jeffry Way's laracasts lessons, such as [modern-css-for-backend-developers](https://laracasts.com/series/modern-css-for-backend-developers/episodes/7). However, because some lessons was published two years ago in 2018, some of them can't work under Laravel 7 and latest version of Tailwind CSS or Vue.js. This demo project fixed these issues.
+
+In this document, I'll describe how I setup the development environment from sketch, and also list the major source files for each related example. 
 
 ## Development Environment/Tools
 - **OS**: Windows 10
@@ -168,5 +169,4 @@ Vue.component('modal', require('./components/ModalComponent.vue').default);
 1. Since git won't add *node_modules* and *vendors* folders into repository, after you clone this project, you need to run **npm install** to install *node_modules* and **composer install** to install *vendor* dependencies. 
 2. The *.env* file is also not included in this repository. You can change *.env.example* to *.env* and make necessary changes according to the environment in your computer.  
 
-GOOD LUCK!
-
+Have fun!
